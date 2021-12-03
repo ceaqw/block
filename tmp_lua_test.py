@@ -35,9 +35,10 @@ def main():
     else:
         global SCRIPT
         SCRIPT = sys.argv[3].split('.')[0].split('/')[-1]
-        os.system("cp ./{}.lua /home/ceaqw/.local/lua/{}.lua".format(SCRIPT, SCRIPT))
+        user = subprocess.getoutput("whoami")
+        os.system("cp ./{}.lua /home/{}/.local/lua/{}.lua".format(SCRIPT, user, SCRIPT))
         run()
-        os.system("rm /home/ceaqw/.local/lua/{}.lua".format(SCRIPT))
+        os.system("rm /home/{}/.local/lua/{}.lua".format(user, SCRIPT))
 
 if __name__ == '__main__':
     main()
